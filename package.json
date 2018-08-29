@@ -1,0 +1,42 @@
+{
+  "name": "abi-decode-functions",
+  "version": "0.1.0",
+  "description": "Extract and list up function ids from opcodes.",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src/**/*.js test/**/*.spec.js",
+    "lint:fix": "eslint src/**/*.js test/**/*.spec.js --fix",
+    "test": "mocha --colors ./test/**/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abi-decoder/abi-decode-functions.git"
+  },
+  "keywords": [
+    "ethereum",
+    "abi",
+    "solidity",
+    "opcode"
+  ],
+  "author": "Yukishige Nakajo <yukishige.marie2013@gmail.com> (http://y-nakajo.hatenablog.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/abi-decoder/abi-decode-functions/issues"
+  },
+  "homepage": "https://github.com/abi-decoder/abi-decode-functions#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^5.4.0",
+    "eslint-config-standard": "^12.0.0-alpha.0",
+    "eslint-plugin-chai-friendly": "^0.4.1",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-mocha": "^5.2.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.8.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "truffle-code-utils": "^1.1.1"
+  }
+}
