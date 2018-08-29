@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint src/**/*.js test/**/*.spec.js",
     "lint:fix": "eslint src/**/*.js test/**/*.spec.js --fix",
-    "test": "mocha --colors ./test/**/*.spec.js && npm run lint"
+    "test": "mocha --colors ./test/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
     "chai": "^4.1.2",
     "eslint": "^5.4.0",
     "eslint-config-standard": "^12.0.0-alpha.0",
+    "eslint-plugin-chai-friendly": "^0.4.1",
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-mocha": "^5.2.0",
     "eslint-plugin-node": "^6.0.1",
