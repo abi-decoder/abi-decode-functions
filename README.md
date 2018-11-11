@@ -12,9 +12,12 @@ $ npm install --save abi-decode-functions
 ## Usage
 
 ```
-const dcoder = require('abi-decode-functions')
+const AbiFunctions = require('abi-decode-functions')
+// or 
+// import AbiFunctions from 'abi-decode-functions'
 const opcodes = getContractOpcodes()
-const functionIds = dcoder.getFunctionIds(opcodes)
+const decoder = new AbiFunctions(opcodes)
+const functionIds = dcoder.getFunctionIds()
 ```
 
 ## NOTE
