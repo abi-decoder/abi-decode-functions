@@ -1,6 +1,6 @@
 {
   "name": "abi-decode-functions",
-  "version": "0.1.0",
+  "version": "0.1.0-test1",
   "description": "Extract and list up function ids from opcodes.",
   "main": "dist/index.js",
   "scripts": {
@@ -9,7 +9,8 @@
     "lint:fix": "tslint 'src/**/*.ts' 'test/**/*.spec.ts' --fix",
     "test": "mocha --recursive --require ts-node/register \"test/**/*.ts\"",
     "build": "npm run lint && tsc",
-    "compile": "tsc"
+    "compile": "tsc",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

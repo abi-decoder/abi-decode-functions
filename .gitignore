@@ -53,3 +53,4 @@ jspm_packages/
 
 # intellij idea metafile
 .iml
+dist/
