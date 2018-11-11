@@ -1,6 +1,6 @@
 {
   "name": "abi-decode-functions",
-  "version": "0.1.0-test1",
+  "version": "0.1.1",
   "description": "Extract and list up function ids from opcodes.",
   "main": "dist/index.js",
   "scripts": {
