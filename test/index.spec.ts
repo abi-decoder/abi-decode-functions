@@ -1,4 +1,6 @@
 /*tslint space-after-keywords: [2, "never"] */
+declare function require(x: string): any
+
 import { expect } from 'chai'
 import AbiFunctions from '../src/index'
 
@@ -62,6 +64,7 @@ describe('index.js', () => {
   describe('getFunctionIds', () => {
     const footerMetadata = '00a165627a7a723058208e0087b75d0ea5908b0776e3657eca75d4d0052a722dd2d3c6a4ad6236b359e90029'
     const opcodes = '0x608060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632c0222891461007d57'
+
     it('success', async () => {
       const decoder = new AbiFunctions(opcodes + footerMetadata)
       const result = decoder.getFunctionIds()
@@ -78,6 +81,27 @@ describe('index.js', () => {
       const decoder = new AbiFunctions('0x1234567890abcdef' + footerMetadata)
       const result = decoder.getFunctionIds()
       expect(result).to.have.length(0)
+    })
+  })
+  describe('find pc by function id', () => {
+    const footerMetadata = '00a165627a7a723058208e0087b75d0ea5908b0776e3657eca75d4d0052a722dd2d3c6a4ad6236b359e90029'
+    const opcodes = '0x608060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632c0222891461007d57'
+
+    it('success', async () => {
+      const decoder = new AbiFunctions(opcodes + footerMetadata)
+      const result = decoder.findProgramCounter('0x2c022289')
+      expect(result).to.be.a('number')
+      expect(result).to.equal(125)
+    })
+    it('fail return undef. non exist id', async () => {
+      const decoder = new AbiFunctions(opcodes + footerMetadata)
+      const result = decoder.findProgramCounter('0x22222222')
+      expect(result).to.be.null
+    })
+    it('fail return undef. when empty', async () => {
+      const decoder = new AbiFunctions('hogehoge')
+      const result = decoder.findProgramCounter('0x2c022289')
+      expect(result).to.be.null
     })
   })
 })

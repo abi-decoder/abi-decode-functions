@@ -40,6 +40,7 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
+    "ethereumjs-utils": "^5.2.5",
     "truffle-code-utils": "^1.1.1"
   }
 }
