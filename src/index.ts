@@ -17,7 +17,8 @@ export default class AbiFunctions {
    */
   public constructor(opcodes = '') {
     this.opcodes = opcodes
-    if (opcodes.length > 0) {
+    this.selectors = []
+    if (opcodes && opcodes.length > 0) {
       this.selectors = this._parseCode(opcodes)
     }
   }

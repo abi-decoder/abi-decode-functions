@@ -103,5 +103,10 @@ describe('index.js', () => {
       const result = decoder.findProgramCounter('0x2c022289')
       expect(result).to.be.null
     })
+    it('fail return undef. when opcodes is null', async () => {
+      const decoder = new AbiFunctions(null)
+      const result = decoder.findProgramCounter('0x2c022289')
+      expect(result).to.be.null
+    })
   })
 })
