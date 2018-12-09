@@ -1,5 +1,4 @@
 /*tslint space-after-keywords: [2, "never"] */
-declare function require(x: string): any
 
 import { expect } from 'chai'
 import AbiFunctions from '../src/index'

@@ -1,2 +1,2 @@
-import AbiFunctions from './abi_functions';
+import AbiFunctions from './abi_functions'
 export default AbiFunctions
