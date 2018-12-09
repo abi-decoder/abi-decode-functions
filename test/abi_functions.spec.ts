@@ -1,10 +1,11 @@
 /*tslint space-after-keywords: [2, "never"] */
-declare function require(x: string): any
 
 import { expect } from 'chai'
 import AbiFunctions from '../src/index'
 
 describe('index.js', () => {
+  const footerMetadata = '00a165627a7a723058208e0087b75d0ea5908b0776e3657eca75d4d0052a722dd2d3c6a4ad6236b359e90029'
+
   describe('isFunctionSelector', () => {
     let decoder: any
     beforeEach(() => {
@@ -41,7 +42,6 @@ describe('index.js', () => {
     })
   })
   describe('parseCode', () => {
-    const footerMetadata = '00a165627a7a723058208e0087b75d0ea5908b0776e3657eca75d4d0052a722dd2d3c6a4ad6236b359e90029'
     const opcodes = '0x608060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632c0222891461007d57'
     let decoder: any
     beforeEach(() => {
@@ -62,7 +62,6 @@ describe('index.js', () => {
     })
   })
   describe('getFunctionIds', () => {
-    const footerMetadata = '00a165627a7a723058208e0087b75d0ea5908b0776e3657eca75d4d0052a722dd2d3c6a4ad6236b359e90029'
     const opcodes = '0x608060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632c0222891461007d57'
 
     it('success', async () => {
@@ -84,7 +83,6 @@ describe('index.js', () => {
     })
   })
   describe('find pc by function id', () => {
-    const footerMetadata = '00a165627a7a723058208e0087b75d0ea5908b0776e3657eca75d4d0052a722dd2d3c6a4ad6236b359e90029'
     const opcodes = '0x608060405260043610610078576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680632c0222891461007d57'
 
     it('success', async () => {
@@ -107,6 +105,18 @@ describe('index.js', () => {
       const decoder = new AbiFunctions(null)
       const result = decoder.findProgramCounter('0x2c022289')
       expect(result).to.be.null
+    })
+  })
+
+  describe('optimise opcodes', () => {
+    const opcodes = '0x6080604052600436106100825763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416632c022289811461008757806342af23c1146100a15780'
+
+    it('function ids', async () => {
+      const decoder = new AbiFunctions(opcodes + footerMetadata)
+      const result = decoder.getFunctionIds()
+      expect(result).to.have.length(2)
+      expect(result[0]).to.equal('0x2c022289')
+      expect(result[1]).to.equal('0x42af23c1')
     })
   })
 })
