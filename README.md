@@ -12,12 +12,14 @@ $ npm install --save abi-decode-functions
 ## Usage
 
 ```
-const AbiFunctions = require('abi-decode-functions')
+const AbiFunctions = require('abi-decode-functions').default
 // or 
 // import AbiFunctions from 'abi-decode-functions'
 const opcodes = getContractOpcodes()
 const decoder = new AbiFunctions(opcodes)
-const functionIds = dcoder.getFunctionIds()
+const functionIds = decoder.getFunctionIds()
+// find function start position on program counter
+const pc = decoder.findProgramCounter('0x2c022289')
 ```
 
 ## NOTE
