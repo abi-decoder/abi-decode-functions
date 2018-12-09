@@ -3,6 +3,7 @@ declare function require(x: string): any
 const utils = require('ethereumjs-utils')
 const parser = require('truffle-code-utils')
 const FUNCTION_SELECTOR_OPCODES = JSON.stringify(['DUP1', 'PUSH4', 'EQ', 'PUSH2', 'JUMPI'])
+const FUNCTION_SELECTOR_OPCODES_OPTIMISED_FIRST = JSON.stringify(['AND','PUSH4','DUP2','EQ','PUSH2'])
 
 interface FunctionInfo {
   id: string
@@ -74,6 +75,6 @@ export default class AbiFunctions {
 
   private _isFunctionSelector(opcodes: any): boolean {
     const names = JSON.stringify(opcodes.map((o: any) => o.name))
-    return names === FUNCTION_SELECTOR_OPCODES
+    return names === FUNCTION_SELECTOR_OPCODES || names === FUNCTION_SELECTOR_OPCODES_OPTIMISED_FIRST
   }
 }
